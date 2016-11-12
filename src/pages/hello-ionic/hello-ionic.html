@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>BSearch</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="hello-ionic-page" padding>
+  <h3 style="text-align: center">Find anything, in the greatest text ever written.</h3>
+  <p style="text-align: center">Sorry millenials, King James Version only...</p>
+
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      {{ item.book }} {{ item.reference }}: {{ item.verse }}
+    </ion-item>
+  </ion-list>
+</ion-content>
