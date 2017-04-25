@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Simply Search
-      <ion-badge style="float:right" item-right>{{ items.length }}</ion-badge>
+      <ion-badge style="float:right" item-right>{{ nonVisibleItems.length }}</ion-badge>
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -16,7 +16,10 @@
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let item of items">
-      {{ item.book }} {{ item.reference }}: {{ item.text }}
+      {{ item.book }} {{ item.reference }}: {{ item.verse }}
     </ion-item>
   </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+   <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
