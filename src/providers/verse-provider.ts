@@ -1,29 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+import { Verse as Verse } from '../app/verse';
+
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
-/*
-  Generated class for the VerseProvider provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
+// Provides Verses from a search query
 @Injectable()
 export class VerseProvider {
-
+    //baseUrl: string = 'https://bsearch.ivanportugal.com';
     constructor(public http: Http) {
 
     }
 
-    search(query: string) {
-        return new Promise(resolve => {
-            let headers = new Headers({ 'Content-Type': 'text/plain' });
-            let options = new RequestOptions({ headers: headers });
-            this.http.post('https://bsearch.ivanportugal.com/search?query=' + query, {}, options)
+    search(query: string): Observable<Verse[]> {
+        let headers = new Headers({ 'Content-Type': 'text/plain' });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post('/search?query=' + query, {}, options)
+                .timeout(3000, new Error('The server timed out! Maybe your query is too complex.'))
                 .map(response => response.json())
-                .subscribe(data => {
-                    resolve(data);
-                });
-        });
+                .catch((error:any) => Observable.throw(error.json().error || 'Could not fetch verse for some unknown reason.'));
     }
 }

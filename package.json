@@ -1,7 +1,7 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "SimplySearch",
+  "author": "Ivan Portugal",
+  "homepage": "http://bsearch.ivanportugal.com/",
   "private": true,
   "scripts": {
     "ionic:build": "ionic-app-scripts build",
@@ -44,5 +44,5 @@
       "locator": "ios"
     }
   ],
-  "description": "bsearchionic: An Ionic project"
+  "description": "bsearchionic: An Ionic project to search the bible"
 }
