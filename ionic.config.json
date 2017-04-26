@@ -3,8 +3,10 @@
   "app_id": "6446d09b",
   "v2": true,
   "typescript": true,
-  "proxies": [{
-    "path": "/search",
-    "proxyUrl": "https://bsearch.ivanportugal.com/search"
-  }]
+  "proxies": [
+    {
+      "path": "/search",
+      "proxyUrl": "https://bsearch.ivanportugal.com/search"
+    }
+  ]
 }
